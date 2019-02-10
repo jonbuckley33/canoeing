@@ -1,5 +1,5 @@
 import * as PIXI from 'pixi.js'
-import Canoe from './Canoe.js'
+import Canoe from './canoe/Canoe.js'
 import River from './River.js'
 
 export default class CanoeGame {
@@ -14,5 +14,10 @@ export default class CanoeGame {
     this.app.stage.addChild(river);
 
     river.addCanoe(canoe);
+
+    this.app.ticker.add((delta) => {
+      river.update(delta);
+      canoe.update(delta);
+    });
   }
 }
